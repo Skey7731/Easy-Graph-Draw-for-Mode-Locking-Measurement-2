@@ -1,0 +1,5 @@
+__pycache__/
+build/
+Graph-Draw/__pycache__/
+hook-tkinterdnd2.py
+main.spec
