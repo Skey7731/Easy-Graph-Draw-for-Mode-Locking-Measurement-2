@@ -1,5 +1,6 @@
 __pycache__/
 build/
+dist/
 Graph-Draw/__pycache__/
 hook-tkinterdnd2.py
 main.spec
