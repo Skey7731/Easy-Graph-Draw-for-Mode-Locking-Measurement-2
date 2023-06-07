@@ -102,11 +102,8 @@ class GraphOSA(tk.Frame):
     def draw_graph(self):
         # データがない場合何もしない
         if (not self.file_data.x) and (not self.file_data.y1) and (not self.file_data.y2):
+            print("OSA")
             return
-
-        # プロットの削除
-        if self.ax.lines:
-            self.ax.lines[0].remove()
     
         # xとyの設定
         self.x = self.file_data.x

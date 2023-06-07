@@ -133,10 +133,6 @@ class GraphAutocorrelation(tk.Frame):
         if (not self.file_data.x) and (not self.file_data.y1) and (not self.file_data.y2):
             return
 
-        # プロットの削除
-        if self.ax.lines:
-            self.ax.lines[0].remove()
-
         # 縦軸のチャンネルの選択
         if self.file_data.y1 and (not self.file_data.y2):
             self.CH_state.set(1)

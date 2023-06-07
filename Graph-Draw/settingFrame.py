@@ -118,6 +118,12 @@ class SettingFrame(tk.Frame):
         isgrid = tk.Checkbutton(b_Lframe, text='グリッド線', variable=self.grid_bln, command=self.apply_settings)
         isgrid.pack(side=tk.RIGHT)
 
+        # 重ね描き
+        self.overlap_bln = tk.BooleanVar()
+        self.overlap_bln.set(False)
+        isoverlap = tk.Checkbutton(b_Lframe, text='重ね描き', variable=self.overlap_bln, command=self.apply_settings)
+        isoverlap.pack(side=tk.RIGHT)
+
         # 色ボタン用フレーム
         b_Rframe = tk.Frame(setting_frame_others)
         # プロット色ボタン
@@ -264,11 +270,17 @@ class SettingFrame(tk.Frame):
             self.y_max_btn_txt.set(str(max(self.graph_y) + band/5))
 
     def apply_settings(self):
+        # 重ね書きする場合は何もしない
+        if self.overlap_bln.get() == True:
+            pass
         # まずプロットを除去
-        if self.graph_frame.ax.lines:
-            self.graph_frame.ax.lines[0].remove()
+        elif self.graph_frame.ax.lines:
+            for line in self.graph_frame.ax.lines:
+                line.remove()
+        # プロットがない場合何もしない
         else:
-            return  # プロットがない場合何もしない
+            print("SETTING")
+            return
 
         # x軸の範囲
         if self.xlim_fix_bln.get() == False:
