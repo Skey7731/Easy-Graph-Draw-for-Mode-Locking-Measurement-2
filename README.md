@@ -1,13 +1,17 @@
 # Easy-Graph-Draw-for-mode-locking-measurement
+
+## 外観
+[ここ](https://github.com/Skey7731/Easy-Graph-Draw-for-Mode-Locking-Measurement-2/releases)からexeファイルをダウンロードして使ってください。
+
 - メインウィンドウ  
-  ![](https://i.imgur.com/LfBKZKI.png)  
+  ![](https://hackmd.io/_uploads/SyXXcc2w2.png)
   
 - グラフウィンドウ(OSA)  
-  ![](https://i.imgur.com/hjDlLws.png)  
+  ![](https://hackmd.io/_uploads/r1oQqcnPh.png)
 
 # 説明
-OSA、オシロスコープ、スペアナの生データ(txt,csv,setファイル)をPythonのmatplotlibでグラフに変換して表示します。  
-Python3.11、Python3.10で動作確認済み。Python3.8だと.txtファイルの読み込みにに失敗するので注意。
+OSA、オシロスコープ、スペアナで測定した生データ(txt,csv,setファイル)をグラフに変換して表示します。グラフの作成、データ確認などに使ってください。  
+ソースコードから動かす場合はPython3.11、Python3.10で動作確認済み。Python3.8だと.txtファイルの読み込みにに失敗するので注意。
 
 ## 使用測定機器
 - OSA：ANDO AQ6317B
@@ -17,8 +21,11 @@ Python3.11、Python3.10で動作確認済み。Python3.8だと.txtファイル�
 - 自己相関計：FEMTOCHROME🄬 RESEARCH, inc. FR-103XL
 
 ## 使い方
+*  **自分でいじって分からなければ以降の説明を読んでください。**
+
 メインウィンドウとグラフを描画して保存するグラフウィンドウに分かれます。  
-メインウィンドウにある4つのボタンを押せば対応するグラフウィンドウを好きなだけ表示できます。
+メインウィンドウにある4つのボタンを押せば対応するグラフウィンドウを好きなだけ表示できます。  
+
 
 - **グラフウィンドウの共通項目**  
   それぞれのグラフウィンドウにファイルをドラッグアンドドロップするか<kbd>ファイルを選択</kbd>を押してデータファイルを選ぶことでグラフの描画/再描画が可能。  ※複数ファイル非対応  
