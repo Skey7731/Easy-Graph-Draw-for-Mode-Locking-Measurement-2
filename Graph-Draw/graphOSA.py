@@ -125,6 +125,9 @@ class GraphOSA(tk.Frame):
         if FWHM[1]:
             conv_pulse_width = 2.52 / FWHM[0]
             self.file_text.set('{}\nFWHM: {:.3f} nm  換算パルス幅: {:.3f} ps'.format(self.file_data.file_name, FWHM[0], conv_pulse_width))
+
+            # 保存時のデフォルトネーム設定
+            self.toolbar.file_name = self.file_data.file_name[:-4] + f"_{FWHM[0]}nm_{round(conv_pulse_width, 3)}ps"
         else:
             self.file_text.set(self.file_data.file_name + '\nFWHM: error  換算パルス幅:  ps')
 
