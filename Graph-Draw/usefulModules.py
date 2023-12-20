@@ -62,6 +62,9 @@ class my_NavigationToolbar2Tk(NavigationToolbar2Tk):
         # FileDataインスタンスの受け取り
         self.file_data = file_data
 
+        # ファイル名の保持
+        self.file_name = None
+
     def save_figure(self, *args):
         filetypes = self.canvas.get_supported_filetypes().copy()
         default_filetype = self.canvas.get_default_filetype()
@@ -80,7 +83,7 @@ class my_NavigationToolbar2Tk(NavigationToolbar2Tk):
         # defaultextension = self.canvas.get_default_filetype()
         defaultextension = ''
         initialdir = self.file_data.folder_path   # os.path.expanduser(mpl.rcParams['savefig.directory'])
-        initialfile = self.file_data.file_name[:-4]   # self.canvas.get_default_filename()
+        initialfile = self.file_data.file_name[:-4] if self.file_name is None else self.file_name   # self.canvas.get_default_filename()
         fname = tkinter.filedialog.asksaveasfilename(
             master=self.canvas.get_tk_widget().master,
             title='Save the figure',
