@@ -203,6 +203,9 @@ class GraphAutocorrelation(tk.Frame):
         
         self.FWHM_text.set(self.file_data.file_name + '\nパルス幅: {} ps 換算スペクトル幅: {} nm'.format(pulse_width, round(conv_spectrum_w, 3)))
 
+        # 保存時のデフォルトネーム設定
+        self.toolbar.file_name = self.file_data.file_name[:-4] + f"_{pulse_width}ps_{round(conv_spectrum_w, 3)}nm"
+
     # ファイルドロップ時の処理
     def process_droped_file(self, event):
         self.file_data.dnd_get_path(event)  # ファイルの名前やパスを取得
