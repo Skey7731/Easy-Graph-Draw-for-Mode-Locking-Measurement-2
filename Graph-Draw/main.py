@@ -8,7 +8,7 @@ from tkinterdnd2 import *
 import sys
 sys.path.append('./')
 
-import fileData, graphAutocorrelation, graphESA, graphOSA, graphWaveform
+import graphAutocorrelation, graphESA, graphOSA, graphWaveform, multiFileProcess
 
 class Main(tk.Frame):
     def __init__(self, master=None):
@@ -69,6 +69,20 @@ class Main(tk.Frame):
         
         graph_button_frame.pack()
         frame1.pack()
+
+        # 一括作製ウィンドウの表示
+        self.bulk_draw_button = ttk.Button(master=master, text="グラフ一括生成(β版)", width=17, padding=[0,3], command=self.bulk_make_window)
+        self.bulk_draw_button.pack()
+
+    def bulk_make_window(self):
+        sub_win = tk.Toplevel(self.master)
+        sub_win.title('グラフ画像の一括生成')
+        win_w = 500
+        win_h = 380
+        sw = sub_win.winfo_screenwidth()
+        sh = sub_win.winfo_screenheight()
+        sub_win.geometry(str(win_w) + 'x' + str(win_h) + '+' + str(int(sw/2-win_w/2)) + '+' + str(int(sh/2-win_h/2)))
+        multiFileProcess.MultiFileConvert_win(sub_win)
 
     def make_OSA(self):
         sub_win = tk.Toplevel(self.master)
@@ -134,7 +148,7 @@ if __name__ == '__main__':
     sw = main_win.winfo_screenwidth()
     sh = main_win.winfo_screenheight()
     main_win.geometry(str(win_w) + 'x' + str(win_h) + '+' + str(int(sw/2-win_w/2)) + '+' + str(int(sh/2-win_h/2)))
-    main_win.title("データ→グラフ変換ソフト v1.0.2")
+    main_win.title("データ→グラフ変換ソフト v3.0.0")
 
     app = Main(main_win)
     main_win.mainloop()
