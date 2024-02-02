@@ -1,6 +1,6 @@
 import tkinter as tk
 from decimal import *
-from tkinter import scrolledtext, ttk
+from tkinter import Misc, scrolledtext, ttk, messagebox
 
 from tkinterdnd2 import *
 
@@ -17,7 +17,7 @@ class MultiFileConvert_win(tk.Frame):
         # 説明書き
         discription1 = ttk.Label(
             self.master,
-            text='ドラッグ&ドロップでファイル選択。\nどのグラフなのかボタンで選択して[グラフ変換！]を押す。',
+            text='ドラッグ&ドロップでファイル追加。\nデータの種類をボタンで選択して[グラフ変換！]を押す。',
             font=("", 12),
             justify='center'
         )
@@ -70,7 +70,13 @@ class MultiFileConvert_win(tk.Frame):
         frame2.pack(pady=5)
 
         # メッセージ
-        self.message = tk.StringVar(self.master, value="読み込んだファイルを表示 パスに { と } は入れるな")
+        class SingleMessage(tk.StringVar):
+            def __init__(self, master: Misc | None = None, value: str | None = None, name: str | None = None) -> None:
+                super().__init__(master, value, name)
+                self.set_default()
+            def set_default(self):
+                self.set("読み込んだファイルを表示 パスに { と } は入れるな！")
+        self.message = SingleMessage(self.master)
         self.message_label = ttk.Label(
             self.master,
             textvariable=self.message,
@@ -122,6 +128,7 @@ class MultiFileConvert_win(tk.Frame):
         
         self.loaded_file_list_area.delete(1.0, tk.END)
         self.loaded_file_list_area.insert(tk.INSERT, new_text)
+        self.message.set_default()
 
     def make_bulk_draph(self):
         if self.loaded_file_path_list == []:
@@ -152,7 +159,7 @@ class MultiFileConvert_win(tk.Frame):
     def reset_file_list(self):
         self.loaded_file_path_list = []
         self.reload_loaded_file_list_area()
-        self.message.set("読み込んだファイルを表示 パスに { と } は入れるな！")
+        self.message.set_default()
 
     def make_OSA(self):
         self.OSAbutton.config(default="active")
