@@ -19,11 +19,11 @@ class FileData:
         self.y2 = []
 
     def failed_reading(self):
-        messagebox.showerror('Read error', f'ファイルデータの読み取りに失敗しました。\n{self.file_path}')
         # グラフをばってんに
         self.x = [-1, 1, 0, -1, 1]
         self.y1 = [-1, 1, 0, 1, -1]
         self.y2 = []
+        messagebox.showerror('Read error', f'ファイルデータの読み取りに失敗しました。\n{self.file_path}')
 
     def dnd_path_shaping(self, s):
         if s[0] == "{":
@@ -160,11 +160,11 @@ class FileData:
                     self.file_ex = 'csv'
 
         except:
-            messagebox.showerror('Error', f'ファイルの変換に失敗しました。\n{self.file_path}')
             # グラフをばってんに
             self.x = [-1, 1, 0, -1, 1]
             self.y1 = [-1, 1, 0, 1, -1]
             self.y2 = []
+            messagebox.showerror('Error', f'ファイルの変換に失敗しました。\n{self.file_path}')
             return
         
         # csvの読み取り

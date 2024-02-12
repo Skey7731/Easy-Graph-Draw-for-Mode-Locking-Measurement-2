@@ -76,7 +76,7 @@ class Main(tk.Frame):
 
     def bulk_make_window(self):
         sub_win = tk.Toplevel(self.master)
-        sub_win.title('グラフ画像の一括生成')
+        sub_win.title('グラフ画像の一括生成(β版)')
         win_w = 500
         win_h = 380
         sw = sub_win.winfo_screenwidth()

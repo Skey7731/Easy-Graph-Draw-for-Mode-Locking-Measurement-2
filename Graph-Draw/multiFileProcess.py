@@ -17,7 +17,7 @@ class MultiFileConvert_win(tk.Frame):
         # 説明書き
         discription1 = ttk.Label(
             self.master,
-            text='ドラッグ&ドロップでファイル追加。\nデータの種類をボタンで選択して[グラフ変換！]を押す。',
+            text='ドラッグ&ドロップでデータファイル追加。\nデータの種類をボタンで選択して[グラフ変換！]を押す。',
             font=("", 12),
             justify='center'
         )
@@ -38,9 +38,9 @@ class MultiFileConvert_win(tk.Frame):
 
         # グラフ作成用のボタンをフレームに設置
         graph_button_frame = tk.Frame(frame1)
-        self.OSAbutton = ttk.Button(graph_button_frame, default="active", text="OSAグラフ", width=15, padding=[0,7], command=self.make_OSA)
+        self.OSAbutton = ttk.Button(graph_button_frame, default="active", text="OSA", width=15, padding=[0,7], command=self.make_OSA)
         self.WFbutton = ttk.Button(graph_button_frame, text="パルス波形", width=15, padding=[0,7], command=self.make_WF)
-        self.ESAbutton = ttk.Button(graph_button_frame, text="ESAグラフ", width=15, padding=[0,7], command=self.make_ESA)
+        self.ESAbutton = ttk.Button(graph_button_frame, text="ESA", width=15, padding=[0,7], command=self.make_ESA)
         self.ACbutton = ttk.Button(graph_button_frame, text="自己相関波形", width=15, padding=[0,7], command=self.make_AC)
         
         self.OSAbutton.grid(row=0, column=0, sticky=tk.EW)
@@ -80,7 +80,7 @@ class MultiFileConvert_win(tk.Frame):
         self.message_label = ttk.Label(
             self.master,
             textvariable=self.message,
-            font=("", 8),
+            font=("", 10),
             justify='center'
             )
         self.message_label.pack()
@@ -88,7 +88,7 @@ class MultiFileConvert_win(tk.Frame):
 
         # スクロールバー付きのテキストウィジェットを作成
         self.loaded_file_list_area = scrolledtext.ScrolledText(master=master, wrap=tk.WORD, width=40, height=10)
-        self.loaded_file_list_area.pack(padx=10, pady=10, fill=tk.BOTH, expand=True)
+        self.loaded_file_list_area.pack(padx=10, pady=(0, 10), fill=tk.BOTH, expand=True)
 
         # ドラック＆ドロップ導入
         self.master.drop_target_register(DND_FILES)
